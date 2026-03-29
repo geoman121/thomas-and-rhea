@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
 :root {
-  --stone: #aeada8;
-  --mist: #86a0ae;
-  --rose: #ad838b;
-  --ink: #2f2c2a;
-  --cream: #f7f4f1;
+  --stone: #d8c28a;
+  --mist: #caa04a;
+  --rose: #a77d2b;
+  --ink: #3b2f1f;
+  --cream: #f7f1e3;
   --soft-white: rgba(255, 255, 255, 0.76);
   --shadow: 0 24px 60px rgba(46, 43, 41, 0.18);
   --radius-lg: 28px;
   --radius-md: 18px;
-  --gold-1: #e6c36a;
-  --gold-2: #b4872f;
-  --gold-3: #f4e3a1;
 }
 
 *,
@@ -30,11 +27,44 @@ body {
   min-height: 100vh;
   font-family: "Manrope", sans-serif;
   color: var(--ink);
+  position: relative;
   background:
-    radial-gradient(circle at top, rgba(173, 131, 139, 0.35), transparent 55%),
-    radial-gradient(circle at 15% 40%, rgba(134, 160, 174, 0.35), transparent 60%),
-    radial-gradient(circle at 80% 90%, rgba(174, 173, 168, 0.45), transparent 55%),
-    linear-gradient(135deg, #e5ded5 0%, #cbd2d3 45%, #b7b0b3 100%);
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.03) 0px,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    linear-gradient(135deg, #f7e7c6 0%, #caa04a 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("photo_1.jpg") center 20% / cover no-repeat;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 769px) {
+  body::before {
+    background-position: center 20%;
+  }
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 .page {
@@ -59,11 +89,19 @@ body {
   overflow: hidden;
 }
 
+.top-border {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin: 0 auto 18px;
+  display: block;
+}
+
 .hero-glow {
   position: absolute;
   inset: -40% -20% auto -20%;
   height: 120%;
-  background: radial-gradient(circle, rgba(173, 131, 139, 0.55), transparent 70%);
+  background: radial-gradient(circle, rgba(167, 125, 43, 0.55), transparent 70%);
   opacity: 0.7;
   filter: blur(12px);
 }
@@ -78,6 +116,7 @@ body {
   backdrop-filter: blur(12px);
   animation: floatUp 0.9s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.65);
+  z-index: 1;
 }
 
 .hero-content::before,
@@ -86,13 +125,13 @@ body {
   position: absolute;
   inset: 12px;
   border-radius: 22px;
-  border: 1px solid rgba(173, 131, 139, 0.25);
+  border: 1px solid rgba(167, 125, 43, 0.25);
   pointer-events: none;
 }
 
 .hero-content::after {
   inset: 22px;
-  border-color: rgba(134, 160, 174, 0.25);
+  border-color: rgba(202, 160, 74, 0.25);
 }
 
 .eyebrow {
@@ -107,12 +146,20 @@ body {
   font-family: "Playfair Display", serif;
   font-size: clamp(2.6rem, 6vw, 4.4rem);
   margin: 0 0 12px;
+  color: #a77d2b;
+  font-style: italic;
+}
+
+.foil-text {
+  color: var(--ink);
+  text-shadow: none;
 }
 
 .subhead {
   font-size: 1.05rem;
   margin: 0 auto 26px;
   color: rgba(47, 44, 42, 0.8);
+  font-style: italic;
 }
 
 .choice {
@@ -130,7 +177,7 @@ body {
   font-size: 0.98rem;
   font-weight: 600;
   background: linear-gradient(135deg, var(--mist), var(--rose));
-  color: #fff;
+  color: #ffffff;
   box-shadow: 0 12px 24px rgba(70, 77, 83, 0.2);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -188,12 +235,14 @@ body {
   font-family: "Playfair Display", serif;
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 0 0 8px;
+  color: var(--ink);
 }
 
 .subtitle {
   margin: 0;
   font-size: 1rem;
   color: rgba(47, 44, 42, 0.75);
+  font-style: italic;
 }
 
 .countdown-card {
@@ -202,7 +251,7 @@ body {
   padding: 22px 26px;
   box-shadow: var(--shadow);
   min-width: 240px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   width: 100%;
   max-width: 520px;
 }
@@ -239,7 +288,7 @@ body {
   display: block;
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #a77d2b;
 }
 
 .countdown-unit {
@@ -257,6 +306,7 @@ body {
   color: rgba(47, 44, 42, 0.7);
   text-align: center;
   font-weight: 600;
+  font-style: italic;
 }
 
 .countdown-actions {
@@ -292,16 +342,16 @@ body {
     linear-gradient(120deg, rgba(134, 160, 174, 0.12), rgba(173, 131, 139, 0.18)),
     repeating-linear-gradient(
       135deg,
-      rgba(244, 227, 161, 0.12) 0px,
-      rgba(244, 227, 161, 0.12) 2px,
-      rgba(180, 135, 47, 0.08) 4px,
-      rgba(180, 135, 47, 0.08) 6px
+      rgba(173, 131, 139, 0.12) 0px,
+      rgba(173, 131, 139, 0.12) 2px,
+      rgba(134, 160, 174, 0.08) 4px,
+      rgba(134, 160, 174, 0.08) 6px
     );
-  border: 1px solid rgba(180, 135, 47, 0.35);
+  border: 1px solid rgba(173, 131, 139, 0.35);
   box-shadow:
     0 26px 60px rgba(63, 60, 58, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -12px 30px rgba(180, 135, 47, 0.08);
+    inset 0 -12px 30px rgba(173, 131, 139, 0.08);
 }
 
 .save-date-card > * {
@@ -315,13 +365,13 @@ body {
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(244, 227, 161, 0.15) 42%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(244, 227, 161, 0.15) 58%,
+    rgba(173, 131, 139, 0.28) 42%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(173, 131, 139, 0.28) 58%,
     transparent 100%
   );
   transform: translateX(-60%);
-  opacity: 0.6;
+  opacity: 0.85;
   mix-blend-mode: screen;
   animation: foilSheen 10s linear infinite;
   pointer-events: none;
@@ -343,7 +393,7 @@ body {
   height: 160px;
   border-radius: 50%;
   opacity: 0.28;
-  background: radial-gradient(circle, rgba(244, 227, 161, 0.5), transparent 70%);
+  background: radial-gradient(circle, rgba(173, 131, 139, 0.5), transparent 70%);
   pointer-events: none;
 }
 
@@ -355,7 +405,7 @@ body {
 .save-date-card::after {
   bottom: -80px;
   left: -60px;
-  background: radial-gradient(circle, rgba(180, 135, 47, 0.45), transparent 70%);
+  background: radial-gradient(circle, rgba(134, 160, 174, 0.45), transparent 70%);
 }
 
 .save-date-header {
@@ -384,13 +434,13 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+  background: linear-gradient(135deg, var(--mist), var(--rose));
   opacity: 0.7;
 }
 
 .detail-date {
   font-size: 1.35rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   font-family: "Playfair Display", serif;
   color: var(--ink);
@@ -443,6 +493,7 @@ body {
 .muted {
   color: rgba(47, 44, 42, 0.6);
   font-size: 0.92rem;
+  font-style: italic;
 }
 
 @media (min-width: 769px) {
@@ -582,7 +633,7 @@ body {
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
+  box-shadow: 0 18px 40px rgba(17, 22, 28, 0.2);
   transition: transform 0.25s ease;
 }
 
@@ -738,6 +789,7 @@ body {
     transform: translateX(60%);
   }
 }
+
 
 @media (max-width: 768px) {
   .hero-content {
