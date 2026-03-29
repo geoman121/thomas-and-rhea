@@ -54,6 +54,7 @@ body::before {
   opacity: 0.18;
   pointer-events: none;
   z-index: 0;
+  background-attachment: fixed;
 }
 
 @media (min-width: 769px) {
